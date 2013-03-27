@@ -7,7 +7,8 @@ require Exporter;
 
 sub kgrep (&@) {
     my $filter = shift;
-    my ($filtered,@keep);
+    my $filtered = [];
+    my @keep;
     local $_;
     for (@_) {
         if ( $filter->() ) {
@@ -32,7 +33,7 @@ Array::KeepGrepped - Like grep, only keeps the stuff it filters out
 
 =head1 VERSION
 
-version 2
+version 3
 
 =head1 SYNOPSIS
 

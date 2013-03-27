@@ -24,7 +24,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Exporter" => 0
   },
-  "VERSION" => 2,
+  "VERSION" => 3,
   "test" => {
     "TESTS" => "t/*.t"
   }

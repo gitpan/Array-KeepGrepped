@@ -15,4 +15,4 @@ meta-spec:
 name: Array-KeepGrepped
 requires:
   Exporter: 0
-version: 2
+version: 3
