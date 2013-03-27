@@ -12,10 +12,10 @@ sub kgrep (&@) {
     local $_;
     for (@_) {
         if ( $filter->() ) {
-            push @$filtered, $_;
+            push @keep, $_;
             }
         else {
-            push @keep, $_;
+            push @$filtered, $_;
             }
         }
     return ($filtered, @keep);
@@ -33,7 +33,7 @@ Array::KeepGrepped - Like grep, only keeps the stuff it filters out
 
 =head1 VERSION
 
-version 3
+version 4
 
 =head1 SYNOPSIS
 
@@ -41,9 +41,9 @@ version 3
 
     my @numbers = 1..10;
 
-    my ($odd, @even) = kgrep { $_ % 2 } @numbers;
+    my ($even, @odd) = kgrep { $_ % 2 } @numbers;
 
-    $, = ","; print @$odd,@even;    # prints "1,3,5,7,9,2,4,6,8,10"
+    $, = ","; print @odd,@$even;    # prints "1,3,5,7,9,2,4,6,8,10"
 
 =head1 DESCRIPTION
 
@@ -60,7 +60,7 @@ in-place, but still be able to use what you removed.
 
     my $bad;
 
-    ($bad, @good) = kgrep { $_ !~ /good/ } @good;
+    ($bad, @good) = kgrep { $_ =~ /good/ } @good;
 
     say "@$bad | @good";   # bad evil wicked | good good good good
 
